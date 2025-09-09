@@ -1,0 +1,70 @@
+﻿<Window x:Class="CMCS2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Contract Monthly Claim System (CMCS)" Height="500" Width="800">
+    <Grid>
+        <TabControl>
+            <!-- Lecturer View -->
+            <TabItem Header="Lecturer View">
+                <Grid Margin="10">
+                    <StackPanel>
+                        <TextBlock Text="Submit Claim" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,5">
+                            <TextBlock Text="Lecturer Name:" Width="150"/>
+                            <TextBox Width="300" Name="txtLecturerName"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,5">
+                            <TextBlock Text="Hours Worked:" Width="150"/>
+                            <TextBox Width="100" Name="txtHoursWorked"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,5">
+                            <TextBlock Text="Hourly Rate:" Width="150"/>
+                            <TextBox Width="100" Name="txtHourlyRate"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,5">
+                            <TextBlock Text="Notes:" Width="150"/>
+                            <TextBox Width="300" Name="txtNotes"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,5">
+                            <TextBlock Text="Upload Document:" Width="150"/>
+                            <Button Width="100" Content="Browse" Name="btnUpload" Click="btnUpload_Click"/>
+                        </StackPanel>
+
+                        <Button Content="Submit Claim" Width="150" Height="30" Margin="0,10" HorizontalAlignment="Left" Click="btnSubmit_Click"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+
+            <!-- Coordinator/Manager View -->
+            <TabItem Header="Coordinator/Manager View">
+                <Grid Margin="10">
+                    <StackPanel>
+                        <TextBlock Text="Pending Claims" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
+
+                        <ListView Name="lvClaims" Height="300">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="Claim ID" Width="80" DisplayMemberBinding="{Binding ClaimID}"/>
+                                    <GridViewColumn Header="Lecturer" Width="150" DisplayMemberBinding="{Binding LecturerName}"/>
+                                    <GridViewColumn Header="Hours" Width="80" DisplayMemberBinding="{Binding HoursWorked}"/>
+                                    <GridViewColumn Header="Rate" Width="80" DisplayMemberBinding="{Binding HourlyRate}"/>
+                                    <GridViewColumn Header="Status" Width="100" DisplayMemberBinding="{Binding Status}"/>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
+                            <Button Content="Approve" Width="100" Margin="5" Click="btnApprove_Click"/>
+                            <Button Content="Reject" Width="100" Margin="5" Click="btnReject_Click"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
